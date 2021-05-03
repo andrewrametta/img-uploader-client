@@ -19,10 +19,20 @@ function App() {
       setPreviewSource(reader.result);
     };
   };
+
+  const handleSubmitFile = (e) => {
+    e.preventDefault();
+    if (!previewSource) return;
+    uploadImg(previewSource);
+  };
+
+  const uploadImg = (base64EncodedImage) => {
+    console.log(base64EncodedImage);
+  };
   return (
     <div className="App">
       <h1>Pretty Please work</h1>
-      <form>
+      <form onSubmit={handleSubmitFile}>
         <input
           type="file"
           name="image"
@@ -30,7 +40,7 @@ function App() {
           value={fileInputState}
           className="form-input"
         />
-        <button className="form-btn" type="button">
+        <button className="form-btn" type="submit">
           Submit
         </button>
       </form>
