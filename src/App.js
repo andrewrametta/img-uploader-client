@@ -25,10 +25,12 @@ function App() {
   const handleSubmitFile = (e) => {
     e.preventDefault();
     if (!previewSource) return;
-    fetchImgJSON(previewSource).then((img) => {
-      console.log(img);
-      setImgurl(img.secure_url);
-    });
+    fetchImgJSON(previewSource)
+      .then((img) => {
+        console.log(img);
+        setImgurl(img.secure_url);
+      })
+      .catch((error) => console.error(error));
   };
 
   const handleNameChange = (e) => {
